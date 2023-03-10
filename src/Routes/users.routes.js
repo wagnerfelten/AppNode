@@ -17,5 +17,6 @@ function myMiddlewere(req, res, next){
 const usersController = new USersController();
 
 usersRoutes.post("/", myMiddlewere, usersController.create);
+usersRoutes.put("/:id", usersController.update);
 
 module.exports = usersRoutes;
