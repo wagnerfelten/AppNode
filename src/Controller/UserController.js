@@ -35,6 +35,20 @@ class USersController{
         if(userUpadeteEmail && userUpadeteEmail.id !== id){
             throw new AppError("Este email já esta em uso.");
         }
+
+        user.name = name;
+        user.email = email;
+
+        await database.run(`
+            UPDATE users SET 
+            name = ?,
+            email = ?,
+            update_at = ?
+            WHERE id = ?
+        `,[user.name, user.email,new Date(), id]
+        );
+
+        return res.status(200).json("Alterado com sucesso!")
     }
 }
 
