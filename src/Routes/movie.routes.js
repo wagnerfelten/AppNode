@@ -8,5 +8,6 @@ const movieControllers = new MovieControllers();
 
 movieRoutes.post("/:user_id", movieControllers.create);
 movieRoutes.get("/:id", movieControllers.show);
+movieRoutes.delete("/:id", movieControllers.delete);
 
 module.exports = movieRoutes;
