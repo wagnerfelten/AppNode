@@ -44,6 +44,16 @@ class MovieControllers{
 
         return res.json("Deletado nota.")
     }
+
+    async index(req, res){
+        const {user_id} = req.query;
+
+        const movieNote = await knex("movieNotes")
+            .where({user_id})
+            .orderBy("title");
+
+        return res.json(movieNote);
+    }
 }
 
 module.exports = MovieControllers;
