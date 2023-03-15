@@ -29,8 +29,20 @@ class MovieControllers{
         const {id} = req.params;
 
         const movieNote = await knex("movieNotes").where({id}).first();
+        const movieTags = await knex("movieTags").where({note_id: id}).orderBy("name");
 
-        return res.json(movieNote);
+        return res.json({
+            ...movieNote,
+            movieTags
+        });
+    }
+
+    async delete(req, res){
+        const { id} = req.params
+
+        await knex("movieNotes").where({id}).delete();
+
+        return res.json("Deletado nota.")
     }
 }
 
