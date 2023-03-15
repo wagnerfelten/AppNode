@@ -6,7 +6,7 @@ const movieRoutes = Router();
 
 const movieControllers = new MovieControllers();
 
-movieRoutes.get("/:user_id", movieControllers.index);
+movieRoutes.get("/", movieControllers.index);
 movieRoutes.post("/:user_id", movieControllers.create);
 movieRoutes.get("/:id", movieControllers.show);
 movieRoutes.delete("/:id", movieControllers.delete);
